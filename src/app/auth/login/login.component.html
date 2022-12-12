@@ -1,0 +1,32 @@
+<div class="container-fluid vh-100 d-flex justify-content-center">
+    <div class="col-12 col-sm-6 d-flex flex-column align-items-center mt-5" >
+        <h3 class="text-center m-0">Welcome to Proper Project Management!</h3>
+        <div class="card w-75 shadow-sm mt-5">
+            <div class="card-header bg-white border-0 mt-5">
+                <h3 class="text-center m-0">Login</h3>
+              </div>
+            <div class="card-body" *ngIf='!this.isLogin'>
+                <form name="login" #myform="ngForm" (ngSubmit)="onSubmit(myform)">
+                    <div class="form-group col-12 mt-2">
+                      <label for="email">Email address</label>
+                      <input type="email" name="email" class="form-control" id="email"  autocomplete="off" aria-describedby="email" placeholder="eg: abc@example.com" ngModel required>
+                      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group col-12 mt-2">
+                      <label for="password">Password</label>
+                      <input type="password" name="password" class="form-control" autocomplete="off" id="password" placeholder="Enter your password" ngModel required>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                            <a routerLink="/"><label class="form-group col-12 mt-2">Register Here</label></a>
+                        <button type="submit" class="btn btn-dark mt-3" value="Login">Submit</button>
+                    </div>
+                  </form>
+              </div>
+        </div>
+    </div>
+
+    <div class="btn btn-dark mt-3" *ngIf='this.isLogin'>
+        <h1>You're Already Logged In!</h1>
+        <button class="btn btn-dark mt-3" (click)='logout()'>Log Out</button>
+    </div>
+</div>
