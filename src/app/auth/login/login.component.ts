@@ -35,7 +35,9 @@ export class LoginComponent implements OnInit {
       const cleanCookieObject = JSON.parse(dirtyCookieObject);
       this._auth.setDataInLocalStorage("email", cleanCookieObject["email"]);
       this._auth.setDataInLocalStorage("session_token", cleanCookieObject["session_token"]);
-      this._router.navigate(['welcome']);
+      this._router.navigate(['welcome']).then(() => {
+        location.reload();
+      });
     }
     })
   }
@@ -50,8 +52,8 @@ export class LoginComponent implements OnInit {
     this._auth.clearStorage();
     this.isLogin = false;
     this._router.navigate(['']);
+    location.reload();
     this._api.getTypeRequest('logout').subscribe((res: any) => {
-
     })
   }
 }
